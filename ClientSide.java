@@ -14,17 +14,17 @@ import java.util.Scanner;
 public class ClientSide {
     public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
-		String from = "Client: ";
+		String from = "Client: ";	
 		
-		System.out.print("Host name/IP address: ");
+		/**System.out.print("Host name/IP address: ");
         String hostName = input.nextLine();
         
         System.out.print("Port #: ");
 		int portNumber = input.nextInt();
-		input.nextLine();		
+		input.nextLine();	*/
 
         try {
-            Socket socket = new Socket(hostName, portNumber);
+        	Socket socket = new Socket("192.168.5.49", 4000);
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
@@ -38,10 +38,10 @@ public class ClientSide {
             input.close();
             socket.close();
         } catch (UnknownHostException e) {
-            System.err.println("Couldn't find the host " + hostName);
+            System.err.println("Couldn't find the host.");
             System.exit(1);
         } catch (IOException e) {
-            System.err.println("Couldn't establish connection to " + hostName + " at " + portNumber);
+            System.err.println("Couldn't establish connection.");
             System.exit(1);
         }
     }
