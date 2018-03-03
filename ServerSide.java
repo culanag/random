@@ -28,15 +28,15 @@ public class ServerSide {
 
             String inputLine;
             String outputLine;
-			out.println("You are now chatting with Server. Say \"Bye\" to end chat.");
-            while ((inputLine = in.readLine()) != null) {
-                 System.out.println(inputLine);
-                 System.out.print(from);
-                 outputLine = input.nextLine();
-                 out.println(from + outputLine);
-
-               if (outputLine.equals("Bye."))
+			out.println("You are now chatting with Server. Say \"bye\" to end chat.");
+            while ((inputLine = in.readLine()) != null) {out.println(inputLine);
+                System.out.print(from);
+                outputLine = input.nextLine();
+                out.println(from + outputLine);
+                 
+                if (outputLine.equals("bye")){
                   	System.exit(0);
+                }
             }
             clientSocket.close();
             serverSocket.close();
